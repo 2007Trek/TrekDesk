@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TrekDesk is an IT Support Management System developed for Mulungushi University.">
+
+    <title>TrekDesk | IT Support Management System</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER AND NAVIGATION
+    ========================================== -->
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="#home" class="brand">
+                <span class="brand-mark">T</span>
+
+                <span class="brand-text">
+                    <strong>TrekDesk</strong>
+                    <small>IT Support Management</small>
+                </span>
+            </a>
+
+            <nav class="main-navigation" aria-label="Main navigation">
+
+                <a href="#home" class="nav-link active">
+                    Overview
+                </a>
+
+                <a href="#manage" class="nav-link">
+                    Manage Tickets
+                </a>
+
+                <a href="#create" class="nav-link">
+                    Create Request
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-container">
+
+
+        <!-- =====================================
+             1. DASHBOARD / HOME
+        ====================================== -->
+
+        <section id="home" class="page-section">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">IT SERVICE MANAGEMENT</p>
+
+                    <h1>Support Desk Overview</h1>
+
+                    <p class="section-description">
+                        Monitor support requests, track their progress
+                        and manage IT service activities.
+                    </p>
+                </div>
+
+                <a href="#create" class="button button-primary">
+                    + Create Request
+                </a>
+
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <span class="stat-label">Total Requests</span>
+
+                    <strong id="total-count" class="stat-value">0</strong>
+
+                    <span class="stat-description">
+                        All recorded requests
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">Pending</span>
+
+                    <strong id="pending-count" class="stat-value">0</strong>
+
+                    <span class="stat-description">
+                        Awaiting attention
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">In Progress</span>
+
+                    <strong id="progress-count" class="stat-value">0</strong>
+
+                    <span class="stat-description">
+                        Currently being handled
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">Completed</span>
+
+                    <strong id="completed-count" class="stat-value">0</strong>
+
+                    <span class="stat-description">
+                        Successfully resolved
+                    </span>
+
+                </article>
+
+            </div>
+
+
+            <!-- Recent Requests -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Recent Support Requests</h2>
+
+                        <p>
+                            The latest requests recorded in the system.
+                        </p>
+                    </div>
+
+                    <a href="#manage" class="text-link">
+                        View all requests →
+                    </a>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recent-records">
+
+                            <!-- JavaScript inserts recent records here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             2. MANAGE RECORDS
+        ====================================== -->
+
+        <section id="manage" class="page-section">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">RECORD MANAGEMENT</p>
+
+                    <h1>Manage Support Requests</h1>
+
+                    <p class="section-description">
+                        Search, view, update and delete IT support requests.
+                    </p>
+                </div>
+
+                <a href="#create" class="button button-primary">
+                    + New Request
+                </a>
+
+            </div>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>All Support Requests</h2>
+
+                        <p>
+                            Manage all requests submitted to the IT department.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Search and Filter -->
+
+                <div class="filter-container">
+
+                    <div class="search-group">
+
+                        <label for="search-input">
+                            Search by title
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-input"
+                            placeholder="Enter request title..."
+                        >
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="status-filter">
+                            Filter by status
+                        </label>
+
+                        <select id="status-filter">
+
+                            <option value="All">All Statuses</option>
+
+                            <option value="Pending">Pending</option>
+
+                            <option value="In progress">In Progress</option>
+
+                            <option value="Completed">Completed</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="records-summary">
+
+                    <span id="records-count">
+                        0 records displayed
+                    </span>
+
+                </div>
+
+
+                <p
+                    id="records-message"
+                    class="message"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+
+                <!-- Records Table -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="records-table-body">
+
+                            <!-- JavaScript inserts records here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             3. CREATE / EDIT REQUEST
+        ====================================== -->
+
+        <section id="create" class="page-section">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">REQUEST MANAGEMENT</p>
+
+                    <h1 id="form-heading">
+                        Create Support Request
+                    </h1>
+
+                    <p class="section-description">
+                        Provide the necessary information about the IT
+                        problem requiring attention.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <section class="panel form-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Request Information</h2>
+
+                        <p>
+                            Complete all fields before submitting.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="record-form">
+
+                    <!-- Request Title -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Request Title
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            minlength="3"
+                            maxlength="80"
+                            placeholder="Example: Unable to access university Wi-Fi"
+                            required
+                        >
+
+                        <small>
+                            Enter between 3 and 80 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Request Category
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                        >
+
+                            <option value="">
+                                Select a category
+                            </option>
+
+                            <option value="Network">
+                                Network
+                            </option>
+
+                            <option value="Software">
+                                Software
+                            </option>
+
+                            <option value="Hardware">
+                                Hardware
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Problem Description
+                            <span class="required">*</span>
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            minlength="5"
+                            maxlength="300"
+                            rows="5"
+                            placeholder="Describe the problem in detail..."
+                            required
+                        ></textarea>
+
+                        <small>
+                            Enter between 5 and 300 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Request Status
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                            required
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="In progress">
+                                In Progress
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Feedback Message -->
+
+                    <p
+                        id="form-message"
+                        class="message"
+                        role="status"
+                        aria-live="polite">
+                    </p>
+
+
+                    <!-- Form Actions -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="save-button"
+                            class="button button-primary">
+                            Save Request
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="button button-secondary">
+                            Clear Form
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="cancel-edit-button"
+                            class="button button-secondary"
+                            hidden>
+                            Cancel Editing
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             4. RECORD DETAILS
+        ====================================== -->
+
+        <section id="details" class="page-section">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">REQUEST INFORMATION</p>
+
+                    <h1>Support Request Details</h1>
+
+                    <p class="section-description">
+                        Review the selected IT support request.
+                    </p>
+                </div>
+
+                <a href="#manage" class="button button-secondary">
+                    ← Back to Requests
+                </a>
+
+            </div>
+
+
+            <section
+                id="record-details"
+                class="panel details-panel">
+
+                <p>
+                    Select a support request from the records table
+                    to view its details.
+                </p>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             5. ABOUT THE SYSTEM
+        ====================================== -->
+
+        <section id="about" class="page-section">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">PROJECT INFORMATION</p>
+
+                    <h1>About TrekDesk</h1>
+
+                    <p class="section-description">
+                        Information about this IT Support Management System.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <section class="panel about-panel">
+
+                <h2>TrekDesk — IT Support Management System</h2>
+
+                <p>
+                    TrekDesk is an IT Support Management System designed
+                    to organise and manage IT-related support requests.
+                    It provides a central interface for recording,
+                    viewing, searching, updating and deleting support
+                    requests.
+                </p>
+
+                <h3>Project Details</h3>
+
+                <div class="about-details">
+
+                    <div class="about-item">
+                        <strong>Student Name</strong>
+                        <span>MULILIMA TRESFORD</span>
+                    </div>
+
+                    <div class="about-item">
+                        <strong>Student Number</strong>
+                        <span>202505153</span>
+                    </div>
+
+                    <div class="about-item">
+                        <strong>Programme</strong>
+                        <span>BSc Computer Science</span>
+                    </div>
+
+                    <div class="about-item">
+                        <strong>University</strong>
+                        <span>Mulungushi University</span>
+                    </div>
+
+                    <div class="about-item">
+                        <strong>Course Code</strong>
+                        <span>ICT251</span>
+                    </div>
+
+                    <div class="about-item">
+                        <strong>Project</strong>
+                        <span>Activity 6 — Frontend Development</span>
+                    </div>
+
+                </div>
+
+
+                <h3>Demonstration Data Notice</h3>
+
+                <p>
+                    This version of TrekDesk uses browser demonstration
+                    data stored locally in the browser using
+                    localStorage. The records are fictional and are
+                    provided for demonstration and testing purposes.
+                </p>
+
+            </section>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <p>
+                © 2026 TrekDesk. All rights reserved.
+            </p>
+
+            <p>
+                ICT251 | Mulungushi University
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script type="module" src="./js/app.js"></script>
+
+</body>
+
+</html>
